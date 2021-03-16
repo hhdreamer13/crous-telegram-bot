@@ -1,0 +1,16 @@
+{
+  "name": "crous_guide_bot",
+  "version": "1.0.0",
+  "description": "Assistant guide téléconseiller",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro-bot"
+  },
+  "keywords": [],
+  "author": "Hooman HMZD",
+  "license": "Hh",
+  "dependencies": {
+    "micro-bot": "^2.5.3",
+    "telegraf": "^4.2.1"
+  }
+}
