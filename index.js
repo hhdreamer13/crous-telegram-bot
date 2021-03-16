@@ -2559,10 +2559,6 @@ bot.action("LESISO", (ctx) => {
 // })
 
 
-bot.hears(['noun', 'noon', 'Noun', 'NOUN', 'NOON', 'نون', 'نان', 'pain', 'bread', 'Bread', 'BREAD'], (ctx) => {
-    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/noon.jpg"})
-})
-
 // bot.hears(['audio'], (ctx) => {
 //     ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice")
 //     ctx.telegram.sendVoice(ctx.chat.id, {source: "ressource/test.m4a"})
