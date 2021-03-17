@@ -21,7 +21,7 @@ const bot = new Composer
 
 // Les commandes principal
 
-bot.start((ctx) => ctx.reply("Bonjour !\nÇa va ? "))
+bot.start((ctx) => ctx.reply("Bonjour !"))
 
 bot.help((ctx) => {
     ctx.reply("Ce bot peut exécuter les ordres suivants\n - /start\n - /help")
