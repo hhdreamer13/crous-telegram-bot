@@ -32,7 +32,7 @@ bot.help((ctx) => {
 
 // Les commandes alternatives
 
-
+bot.set_webhook()
 
 
 
@@ -2720,7 +2720,7 @@ Vous pouvez appuyer sur les boutons en bas ou taper des mots clès (acronymes, n
 
 module.exports = bot
 
-// agile-eyrie-67865
-// https://agile-eyrie-67865.herokuapp.com/ 
+// crous-guide-bot
+// https://crous-guide-bot.herokuapp.com/ 
 // const token = '1588288656:AAG0etwxH9EKDj0qHfkuQEimax73TfJ7YUk'
 
