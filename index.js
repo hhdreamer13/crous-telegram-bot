@@ -32,8 +32,6 @@ bot.help((ctx) => {
 
 // Les commandes alternatives
 
-bot.set_webhook()
-
 
 
 // les adresses des responsables
