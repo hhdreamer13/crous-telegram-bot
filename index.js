@@ -363,7 +363,10 @@ bot.hears(['CVEC', 'cvec'], (ctx) => {
 
     🔸 Les étudiants boursiers campus France.
 
-    `
+    `,
+    {
+        parse_mode: "HTML"
+    }
     )
 })
 
@@ -512,7 +515,10 @@ bot.hears(['frais', 'frais de dossier', 'frais dse'], (ctx) => {
 
     ❗️ Remboursement : Justificatif de double paiement et RIB => libellé à l'ordre de l'agent comptable du Crous de Paris.
     
-    `
+    `,
+    {
+        parse_mode: "HTML"
+    }
     )
 })
 
