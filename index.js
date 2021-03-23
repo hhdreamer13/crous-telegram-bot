@@ -338,7 +338,31 @@ bot.hears(['CROUS', 'crous'], (ctx) => {
 
 bot.hears(['CVEC', 'cvec'], (ctx) => {
     ctx.reply(`
-    Contribution de Vie Etudiante et de Campus
+    <b>C</b>ontribution de <b>V</b>ie <b>E</b>tudiante et de <b>C</b>ampus
+
+    🔸 Tous les étudiants inscrits en initial dans un établissement d’ES doivent s’en acquitter.
+    
+    🔸 Les étudiants en Apprentissage, les étudiants au CNED et les étudiants en DAEU doivent eux aussi s’acquitter de la CVEC.
+    
+    ❗️ Le paiement de la CVEC peut se faire sur internet (carte de crédit) ou via la poste avec le module <b>FICASH</b> (frais supplémentaire de 5 euros à indiquer à l’étudiant).
+    
+    ❗️ En cas de changement de l'établissement ou académie, l’étudiant doit se rapprocher de son établissement pour qu’il l’accepte pour au motif qu’il s’agit d’une taxe nationale.
+
+    ❗️ Les étudiants boursiers du Crous n’ont pas de démarche à effectuer pour demander le remboursement, ce dernier se fait automatiquement <b>dans un délai de 3 mois</b> après le premier versement de la bourse.
+
+    ❗️ Pour les autres étudiants exonérés, la demande de remboursement se fait sur la plateforme CVEC via MSE.gouv.fr 
+
+
+    Sont exonérés :
+
+    🔸 Les boursiers du Crous
+
+    🔸 Les réfugiés 
+
+    🔸 Les demandeurs d’asile 
+
+    🔸 Les étudiants boursiers campus France.
+
     `
     )
 })
@@ -471,6 +495,28 @@ bot.hears(['RSA', 'rsa'], (ctx) => {
 })
 
 bot.hears(['CGV', 'cgv'], (ctx) => {
+    ctx.reply(`
+    Complément Grandes Vacances
+    `
+    )
+})
+
+bot.hears(['frais', 'frais de dossier', 'frais dse'], (ctx) => {
+    ctx.reply(`
+    4 Euro
+    OK : par virement
+    KO : par chèque 
+    Différé 
+
+    🔸 Payer par chèque : Il faut joindre un chèque (à l'exclusion de tout autre moyen de paiement) d'un montant de 4 €, libellé à l'ordre de l'agent comptable du Crous de Paris.
+
+    ❗️ Remboursement : Justificatif de double paiement et RIB => libellé à l'ordre de l'agent comptable du Crous de Paris.
+    
+    `
+    )
+})
+
+bot.hears(['isole', 'isolé', 'ISOLE'], (ctx) => {
     ctx.reply(`
     Complément Grandes Vacances
     `
@@ -1266,10 +1312,10 @@ bot.action('RETREVENU', (ctx) => {
 
 
 
-// Inline keys -- commande 4 (points important)
+// Inline keys -- commande 4 (actualités importantes)
 
-bot.command('point', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Les points importants :',
+bot.command('actualité', (ctx) => {
+    ctx.telegram.sendMessage(ctx.chat.id, 'Les actualités importantes :',
     {
         reply_markup: {
             inline_keyboard: [
@@ -2634,7 +2680,7 @@ bot.hears(['code', 'codes'], (ctx) => {
     commande 1 (site)
     commande 2 (revision)
     commande 3 (prise de revenus)
-    commande 4 (points important)
+    commande 4 (actualités importantes)
     commande 5 (aide complémentaires)
     commande 6 (Le Service Social)
     commande 7 (Criteres de bourse)
@@ -2684,7 +2730,7 @@ Vous pouvez appuyer sur les boutons en bas ou taper des mots clès (acronymes, n
 /aglae   : Les commandes d'AGLAE
 /revision: Le Guide des révisions
 /revenu  : Le Guide de prise des revenus et Présence en France
-/point   : Les points importants à retenir
+/actualité   : Les actualités à retenir
 /site    : Les sites internet nécessaires
 /leslie  : Si Leslie voulait répondre
 /start   : Démarrage du bot
@@ -2701,7 +2747,7 @@ Vous pouvez appuyer sur les boutons en bas ou taper des mots clès (acronymes, n
                 [{text: "/aglae  \u21E8 Les commandes d'AGLAE"}],
                 [{text: "/revision \u21E8 Le Guide des révisions"}],
                 [{text: "/revenu \u21E8 Guide de prise des revenus et Présence"}],
-                [{text: "/point \u21E8 Les points importants à retenir"}],
+                [{text: "/actualité \u21E8 Les actualtiés importantes à retenir"}],
                 [{text: "/site \u21E8 Les sites internet nécessaires"}],
                 [{text: "/start \u21E8 Démarre le bot"}, {text: "/help \u21E8 Foire aux questions"}]
 
@@ -2722,3 +2768,7 @@ module.exports = bot
 // https://crous-guide-bot.herokuapp.com/ 
 // const token = '1588288656:AAG0etwxH9EKDj0qHfkuQEimax73TfJ7YUk'
 
+// heroku git:remote -a crous-guide-bot
+// git add .    
+// git commit -m 'commit message'  
+// git push heroku master      
