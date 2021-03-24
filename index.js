@@ -344,7 +344,7 @@ bot.hears(['CVEC', 'cvec'], (ctx) => {
     
     🔸 Les étudiants en Apprentissage, les étudiants au CNED et les étudiants en DAEU doivent eux aussi s’acquitter de la CVEC.
     
-    ❗️ Le paiement de la CVEC peut se faire sur internet (carte de crédit) ou via la poste avec le module <b>FICASH</b> (frais supplémentaire de 5 euros à indiquer à l’étudiant).
+    ❗️ Le paiement de la CVEC peut se faire sur internet (carte de crédit) ou via la poste avec le module <b>EFICASH</b> (frais supplémentaire de 5 euros à indiquer à l’étudiant).
     
     ❗️ En cas de changement de l'établissement ou académie, l’étudiant doit se rapprocher de son établissement pour qu’il l’accepte pour au motif qu’il s’agit d’une taxe nationale.
 
@@ -504,6 +504,21 @@ bot.hears(['CGV', 'cgv'], (ctx) => {
     )
 })
 
+bot.hears(['CDAPH', 'cdaph'], (ctx) => {
+    ctx.reply(`
+    Les Commissions des droits et de l'autonomie des personnes handicapées
+    `
+    )
+})
+
+bot.hears(['mdph', 'MDPH'], (ctx) => {
+    ctx.reply(`
+    Maison départementale des personnes handicapées
+    `
+    )
+})
+
+
 bot.hears(['frais', 'frais de dossier', 'frais dse'], (ctx) => {
     ctx.reply(`
     4 Euro
@@ -522,11 +537,74 @@ bot.hears(['frais', 'frais de dossier', 'frais dse'], (ctx) => {
     )
 })
 
-bot.hears(['isole', 'isolé', 'ISOLE'], (ctx) => {
+bot.hears(['rectificatif', 'avis rectificatif', 'réctificatif'], (ctx) => {
     ctx.reply(`
-    Complément Grandes Vacances
-    `
+    🔸 L'avis réctificatif délivre sur l'année concernée.
+
+    ❗️ On prend "l'AF 2020" sur les revenus 2019, mais l'avis réctificatif est "l'avis 2019" directement.
+    
+    `,
+    {
+        parse_mode: "HTML"
+    }
     )
+})
+
+bot.hears(['réfugié', 'refugié', 'refugie'], (ctx) => {
+    ctx.reply(`
+    🔸 Demander lettre de l'OFPRA.
+    
+    🔸 Prendre son AF (AF N-2 ou N-1 selon date d’arrivée en France)
+
+    🔸 S’ils viennent juste d’arriver : une attestation d’aide ou moyen d’existence (demander une attestation à la CAF de non perception d’aides ainsi que sa déclaration sur l’honneur de revenus).
+    
+    ❗️ Bénéficier de CGV 
+
+    ❗️ Être exonérés de la CVEC
+    `,
+    {
+        parse_mode: "HTML"
+    }
+    )
+})
+
+bot.hears(['handicapé', 'handicape', 'handicapés'], (ctx) => {
+    ctx.reply(`
+
+    🔸 Critères d’attribution pour les étudiants handicapés : pas de limite d’âge 
+    
+    🔸 Pas de limit d'âge pour prétendre à une aide du service social si atteints d’un handicap reconnu par la CDAPH.
+
+    🔸 Trois droits de bourse supplémentaires pour l’ensemble de la scolarité : Les étudiants handicapés reconnus par CDAPH.
+
+    `,
+    {
+        parse_mode: "HTML"
+    }
+    )
+})
+
+
+bot.hears(['isolé', 'isole', 'particulier', 'divorcé', 'décédé', 'divorce', 'decede', 'cas particulier'], (ctx) => {
+    [ctx.telegram.sendMessage(ctx.chat.id, 
+        `
+    ❗️ Dans tous les cas, à titre vérificatif, les avis fiscaux des deux parents doivent être fournis ! Ensuite, au moment de l'instruction le gestionnaire vérifiera les ressources à prendre en compte.
+
+    🔸 Un seul des deux parents est en situation de parent isolé sur l'année de référence n-2 (lettre T sur l'avis fiscal et/ou parent isolé auprès de la Caf). Dans ce cas, les revenus du parent isolé sont pris en compte. Il faut également qu'il rattache l'étudiant sur son avis fiscal.
+
+    🔸 S'il y a un jugement de divorce ou de séparation, ou un acte sous signature privé contresigné par un notaire, et que ce document légal prévoit la résidence exclusive de l'enfant chez l'un ainsi que le versement de la pension alimentaire par l'autre parent. L'enfant doit également être rattaché au parent ayant la garde. Dans ce cas, les revenus du parent à qui est attribuée la résidence exclusive sont pris en compte.
+
+    🔸 Si l'étudiant a un parent décédé. Dans ce cas, merci de fournir le certificat de décès. Si les parents de l'étudiant étaient mariés ensemble, merci de fournir les justificatifs concernant la pension de réversion (ou attestation sur l'honneur le cas échéant).
+
+    🔸 Si l'étudiant n'est reconnu à la naissance que par un seul parent. Dans ce cas, merci de fournir une copie du livret de famille.
+
+    `, 
+    {
+        parse_mode: "HTML"
+    }),
+    ctx.telegram.sendChatAction(ctx.chat.id, 'upload_photo'), 
+    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/particuliers.jpg"})]
+
 })
 
 
@@ -1320,7 +1398,7 @@ bot.action('RETREVENU', (ctx) => {
 
 // Inline keys -- commande 4 (actualités importantes)
 
-bot.command('actualité', (ctx) => {
+bot.command('actualite', (ctx) => {
     ctx.telegram.sendMessage(ctx.chat.id, 'Les actualités importantes :',
     {
         reply_markup: {
@@ -2646,6 +2724,12 @@ bot.hears(['code', 'codes'], (ctx) => {
     numerisation
     mail type1
     izly
+    réfugié
+    handicapé
+    réctificatif
+    particulier
+    isole
+
     
     AF
     ASS
@@ -2679,6 +2763,8 @@ bot.hears(['code', 'codes'], (ctx) => {
     daeu
     meef
     ofpra
+    mdph
+    cdaph
     dom
     Méditerranée
     
@@ -2736,7 +2822,7 @@ Vous pouvez appuyer sur les boutons en bas ou taper des mots clès (acronymes, n
 /aglae   : Les commandes d'AGLAE
 /revision: Le Guide des révisions
 /revenu  : Le Guide de prise des revenus et Présence en France
-/actualité   : Les actualités à retenir
+/actualite   : Les actualités à retenir
 /site    : Les sites internet nécessaires
 /leslie  : Si Leslie voulait répondre
 /start   : Démarrage du bot
@@ -2753,7 +2839,7 @@ Vous pouvez appuyer sur les boutons en bas ou taper des mots clès (acronymes, n
                 [{text: "/aglae  \u21E8 Les commandes d'AGLAE"}],
                 [{text: "/revision \u21E8 Le Guide des révisions"}],
                 [{text: "/revenu \u21E8 Guide de prise des revenus et Présence"}],
-                [{text: "/actualité \u21E8 Les actualtiés importantes à retenir"}],
+                [{text: "/actualite \u21E8 Les actualtiés importantes à retenir"}],
                 [{text: "/site \u21E8 Les sites internet nécessaires"}],
                 [{text: "/start \u21E8 Démarre le bot"}, {text: "/help \u21E8 Foire aux questions"}]
 
