@@ -603,7 +603,7 @@ bot.hears(['isolé', 'isole', 'particulier', 'divorcé', 'décédé', 'divorce',
         parse_mode: "HTML"
     }),
     ctx.telegram.sendChatAction(ctx.chat.id, 'upload_photo'), 
-    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/particuliers.jpg"})]
+    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/particulier.jpg"})]
 
 })
 
