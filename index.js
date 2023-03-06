@@ -3,92 +3,85 @@
 // J'ajouterai ici une liste des commandes et des mot clès que le bot comprendre
 
 // Micro bot codes for server
-const { Composer } = require('micro-bot')
-const bot = new Composer
-
-
+const { Composer } = require("micro-bot");
+const bot = new Composer();
 
 // Importer des bibliothèques essentielles (pas pour en ligne)
 // const { Telegraf } = require('telegraf')
 
 // Controler le bot de Telegram
 
-// const token = '1588288656:AAG0etwxH9EKDj0qHfkuQEimax73TfJ7YUk'
+const token = "1588288656:AAG0etwxH9EKDj0qHfkuQEimax73TfJ7YUk";
 
 // const bot = new Telegraf(token)
 
-
-
 // Les commandes principal
 
-bot.start((ctx) => ctx.reply("Bonjour !"))
+bot.start((ctx) => ctx.reply("Bonjour !"));
 
 bot.help((ctx) => {
-    ctx.reply("Ce bot peut exécuter les ordres suivants\n - /start\n - /help")
-})
-
-
-
+  ctx.reply("Ce bot peut exécuter les ordres suivants\n - /start\n - /help");
+});
 
 // Les commandes alternatives
 
-
-
 // les adresses des responsables
 
-bot.hears(['leo', 'léo'], (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.hears(["leo", "léo"], (ctx) => {
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 <b>Léo Angioletti</b>
 Responsable du centre de contact IDF
 
 T. : 01 40 51 36 55
 M. : 06 28 47 31 38
 leo.angioletti@crous-paris.fr
-    `, 
+    `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.hears('arnaud', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.hears("arnaud", (ctx) => {
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 <b>Arnaud Duché</b>
 Responsable adjoint du centre de contact IDF
 
 T. : 01 40 51 58 37
 M. : 07 86 17 26 83
 arnaud.duche@crous-paris.fr
-    `, 
+    `,
     {
-        parse_mode: "HTML"
-    })
-})
-
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Bold, italic and other html typing formats
-bot.hears(['logement', 'LOGEMENT'], (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 
+bot.hears(["logement", "LOGEMENT"], (ctx) => {
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
     `
 <b>Versailles</b> : Vous pourrez transférer l’appel à un gestionnaire du service logement (via Kiamo).
 
 <b>Paris</b> : L’étudiant devra envoyer un mail au service logement du Crous de Paris via l’assistance MSE.
 
 <b>Créteil</b> : L’étudiant devra envoyer un mail au service logement du Crous de Créteil via l’assistance MSE.
-    `, 
+    `,
     {
-        parse_mode: "HTML"
-    })
-})
-
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Les mot clès que le bot comprend
 
-
-bot.hears(['recours', 'Recours'], (ctx) => {
-    ctx.reply(`
+bot.hears(["recours", "Recours"], (ctx) => {
+  ctx.reply(`
 les adresses à communiquer aux étudiants pour leur permettre d’envoyer leurs demandes écrites de recours :
 
 Paris : 47 rue des écoles 75005 Paris
@@ -97,12 +90,11 @@ Créteil : 4 Rue Georges Enesco, 94000 Créteil, adresser le courrier « à l’
 
 Versailles : 3 Boulevard de Lesseps, 78000 Versailles
     
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['présence', 'presence'], (ctx) => {
-    ctx.reply(`
+bot.hears(["présence", "presence"], (ctx) => {
+  ctx.reply(`
 Les certificats de scolarité sont de nouveaux acceptés (dans la limite des 3 années précédant la demande  pour justifier d’une présence en France.
  
 Pour rappel les documents acceptés :
@@ -114,13 +106,12 @@ Pour rappel les documents acceptés :
         Pour les mineurs :
         -          Copie du plus ancien titre de circulation pour mineur
     
+    `);
+});
+
+bot.hears(["numerisation", "numérisation"], (ctx) => {
+  ctx.reply(
     `
-    )
-})
-
-
-bot.hears(['numerisation', 'numérisation'], (ctx) => {
-    ctx.reply(`
 Adresse des Prestataires de numérisation
 
 <b>Pour les dossiers de Paris :</b>
@@ -143,12 +134,14 @@ TSA 84025
 
     `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.hears(['mail type1', 'Mail Type1'], (ctx) => {
-    ctx.reply(`
+bot.hears(["mail type1", "Mail Type1"], (ctx) => {
+  ctx.reply(
+    `
 <b>Demande d’accusé de réception PJ :</b>
 
 Bonjour,
@@ -162,12 +155,14 @@ Le service des bourses
     
     `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.hears(['mail type2', 'Mail Type2'], (ctx) => {
-    ctx.reply(`
+bot.hears(["mail type2", "Mail Type2"], (ctx) => {
+  ctx.reply(
+    `
 <b>Crédits insuffisants :</b>
 
 Vous avez déjà utilisé X droits à bourse au titre de votre cursus licence ou équivalent. 
@@ -182,22 +177,20 @@ Le service des bourses
     
     `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-
-bot.hears(['izly', 'IZLY'], (ctx) => {
-    ctx.reply(`
+bot.hears(["izly", "IZLY"], (ctx) => {
+  ctx.reply(`
 Les contacts avec le service Izly se feront via le Crous de gestion de l’étudiant.
 
 Paris:      assistance-izly@crous-paris.fr
 Créteil:    support.izly@crous-créteil.fr
 Versaille:  assistance-izly@crous-versailles.fr
-    `
-    )
-})
+    `);
+});
 
 // bot.hears(['cvec', 'CVEC'], (ctx) => {
 //     ctx.reply(`
@@ -210,134 +203,117 @@ Versaille:  assistance-izly@crous-versailles.fr
 //     )
 // })
 
-
 // Dictionnaire des Acronyme
 
-bot.hears(['AF', 'af'], (ctx) => {
-    ctx.reply(`
+bot.hears(["AF", "af"], (ctx) => {
+  ctx.reply(`
     Avis Fiscal
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['AGLAE', 'aglae'], (ctx) => {
-    ctx.reply(`
+bot.hears(["AGLAE", "aglae"], (ctx) => {
+  ctx.reply(`
     Application pour la Gestion du Logement et des Aides Etudiantes
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['AMM', 'amm'], (ctx) => {
-    ctx.reply(`
+bot.hears(["AMM", "amm"], (ctx) => {
+  ctx.reply(`
     Aide à la Mobilité Master
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ARE', 'are'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ARE", "are"], (ctx) => {
+  ctx.reply(`
     Allocation Retour à l’Emploi
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ASA', 'asa'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ASA", "asa"], (ctx) => {
+  ctx.reply(`
     Aides Spécifiques Annuelles
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ASAA', 'asaa'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ASAA", "asaa"], (ctx) => {
+  ctx.reply(`
     L’Allocation Spécifique d’Allocation Annuelle
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ASAP', 'asap'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ASAP", "asap"], (ctx) => {
+  ctx.reply(`
     Aides Spécifiques Allocations Ponctuelles
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ASE', 'ase'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ASE", "ase"], (ctx) => {
+  ctx.reply(`
     Aide sociale à l’Enfance
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ASS', 'ass'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ASS", "ass"], (ctx) => {
+  ctx.reply(`
     Allocation de Solidarité Spécifique
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['BCS', 'bcs'], (ctx) => {
-    ctx.reply(`
+bot.hears(["BCS", "bcs"], (ctx) => {
+  ctx.reply(`
     Bourse sur Critères Sociaux
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['BM', 'bm'], (ctx) => {
-    ctx.reply(`
+bot.hears(["BM", "bm"], (ctx) => {
+  ctx.reply(`
     Bourse au Mérite
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CAVEJ', 'cavej'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CAVEJ", "cavej"], (ctx) => {
+  ctx.reply(`
 Centre Audiovisuel d’Etudes Juridiques
 
 ❗️ Les étudiants au CAVEJ pouvant justifier d’une formation en présentiel peuvent prétendre aux points de distance.
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CNED', 'cned'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CNED", "cned"], (ctx) => {
+  ctx.reply(`
 Centre National d’Enseignement à Distance
 
 ❗️ Les étudiants au CNED ne peuvent pas prétendre à des points de distance, vous devez vérifier que le forçage distance est bien à 0 kilomètre.
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CNOUS', 'cnous'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CNOUS", "cnous"], (ctx) => {
+  ctx.reply(`
     Centre National des Œuvres Universitaires et Scolaires
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['GEN', 'gen'], (ctx) => {
-    ctx.reply(`
+bot.hears(["GEN", "gen"], (ctx) => {
+  ctx.reply(`
     La Grande Ecole du Numérique
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['UAIRNE', 'uairne'], (ctx) => {
-    ctx.reply(`
+bot.hears(["UAIRNE", "uairne"], (ctx) => {
+  ctx.reply(`
     Unité Administrative Immatriculée au Répertoire National des Etablissements
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CROUS', 'crous'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CROUS", "crous"], (ctx) => {
+  ctx.reply(`
     Centre Régional des Œuvres Universitaires et Scolaires
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CVEC', 'cvec'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CVEC", "cvec"], (ctx) => {
+  ctx.reply(
+    `
     <b>C</b>ontribution de <b>V</b>ie <b>E</b>tudiante et de <b>C</b>ampus
 
     🔸 Tous les étudiants inscrits en initial dans un établissement d’ES doivent s’en acquitter.
@@ -365,162 +341,140 @@ bot.hears(['CVEC', 'cvec'], (ctx) => {
 
     `,
     {
-        parse_mode: "HTML"
+      parse_mode: "HTML",
     }
-    )
-})
+  );
+});
 
-bot.hears(['DAEU', 'daeu'], (ctx) => {
-    ctx.reply(`
+bot.hears(["DAEU", "daeu"], (ctx) => {
+  ctx.reply(`
     Diplôme d’Accès aux Etudes Universitaires
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['DSE', 'dse'], (ctx) => {
-    ctx.reply(`
+bot.hears(["DSE", "dse"], (ctx) => {
+  ctx.reply(`
     Dossier Social Etudiant
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ECTS', 'ects'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ECTS", "ects"], (ctx) => {
+  ctx.reply(`
     European Credits Transfer System
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ES', 'es'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ES", "es"], (ctx) => {
+  ctx.reply(`
     Enseignement Supérieur
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['ICR', 'icr'], (ctx) => {
-    ctx.reply(`
+bot.hears(["ICR", "icr"], (ctx) => {
+  ctx.reply(`
     Informations Complémentaires de Renseignement
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['IFSI', 'ifsi'], (ctx) => {
-    ctx.reply(`
+bot.hears(["IFSI", "ifsi"], (ctx) => {
+  ctx.reply(`
     Instituts de Formation en Soins infirmiers
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['INE', 'ine'], (ctx) => {
-    ctx.reply(`
+bot.hears(["INE", "ine"], (ctx) => {
+  ctx.reply(`
     Identifiant National Etudiant
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['MAA', 'maa'], (ctx) => {
-    ctx.reply(`
+bot.hears(["MAA", "maa"], (ctx) => {
+  ctx.reply(`
     Ministère de l’Agriculture et de l’Alimentation
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['MEEF', 'meef'], (ctx) => {
-    ctx.reply(`
+bot.hears(["MEEF", "meef"], (ctx) => {
+  ctx.reply(`
     master des Métiers de l’Enseignement, de l’Education et de la Formation
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CPGE', 'cpge'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CPGE", "cpge"], (ctx) => {
+  ctx.reply(`
     Classe préparatoire aux grandes écoles
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['MESRI', 'mesri'], (ctx) => {
-    ctx.reply(`
+bot.hears(["MESRI", "mesri"], (ctx) => {
+  ctx.reply(`
     Ministère de l’Enseignement Supérieur de la Recherche et de l’innovation
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['MIC', 'mic'], (ctx) => {
-    ctx.reply(`
+bot.hears(["MIC", "mic"], (ctx) => {
+  ctx.reply(`
     Ministère de la Culture
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['MSE', 'mse'], (ctx) => {
-    ctx.reply(`
+bot.hears(["MSE", "mse"], (ctx) => {
+  ctx.reply(`
     Mes Services Etudiants
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['APE', 'ape'], (ctx) => {
-    ctx.reply(`
+bot.hears(["APE", "ape"], (ctx) => {
+  ctx.reply(`
     Activité Principale Exercée
-    `
-    )
-})
+    `);
+});
 
-
-bot.hears(['OFPRA', 'ofpra'], (ctx) => {
-    ctx.reply(`
+bot.hears(["OFPRA", "ofpra"], (ctx) => {
+  ctx.reply(`
     Office Française de Protection des Réfugiés et Apatride
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['OR', 'or'], (ctx) => {
-    ctx.reply(`
+bot.hears(["OR", "or"], (ctx) => {
+  ctx.reply(`
     Ordre de reversement
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['RBG', 'rbg'], (ctx) => {
-    ctx.reply(`
+bot.hears(["RBG", "rbg"], (ctx) => {
+  ctx.reply(`
     Revenu Brut Global
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['RSA', 'rsa'], (ctx) => {
-    ctx.reply(`
+bot.hears(["RSA", "rsa"], (ctx) => {
+  ctx.reply(`
     Revenu de Solidarité Actif
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CGV', 'cgv'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CGV", "cgv"], (ctx) => {
+  ctx.reply(`
     Complément Grandes Vacances
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['CDAPH', 'cdaph'], (ctx) => {
-    ctx.reply(`
+bot.hears(["CDAPH", "cdaph"], (ctx) => {
+  ctx.reply(`
     Les Commissions des droits et de l'autonomie des personnes handicapées
-    `
-    )
-})
+    `);
+});
 
-bot.hears(['mdph', 'MDPH'], (ctx) => {
-    ctx.reply(`
+bot.hears(["mdph", "MDPH"], (ctx) => {
+  ctx.reply(`
     Maison départementale des personnes handicapées
+    `);
+});
+
+bot.hears(["frais", "frais de dossier", "frais dse"], (ctx) => {
+  ctx.reply(
     `
-    )
-})
-
-
-bot.hears(['frais', 'frais de dossier', 'frais dse'], (ctx) => {
-    ctx.reply(`
     4 Euro
     OK : par virement
     KO : par chèque 
@@ -532,26 +486,28 @@ bot.hears(['frais', 'frais de dossier', 'frais dse'], (ctx) => {
     
     `,
     {
-        parse_mode: "HTML"
+      parse_mode: "HTML",
     }
-    )
-})
+  );
+});
 
-bot.hears(['rectificatif', 'avis rectificatif', 'réctificatif'], (ctx) => {
-    ctx.reply(`
+bot.hears(["rectificatif", "avis rectificatif", "réctificatif"], (ctx) => {
+  ctx.reply(
+    `
     🔸 L'avis réctificatif délivre sur l'année concernée.
 
     ❗️ On prend "l'AF 2020" sur les revenus 2019, mais l'avis réctificatif est "l'avis 2019" directement.
     
     `,
     {
-        parse_mode: "HTML"
+      parse_mode: "HTML",
     }
-    )
-})
+  );
+});
 
-bot.hears(['réfugié', 'refugié', 'refugie'], (ctx) => {
-    ctx.reply(`
+bot.hears(["réfugié", "refugié", "refugie"], (ctx) => {
+  ctx.reply(
+    `
     🔸 Demander lettre de l'OFPRA.
     
     🔸 Prendre son AF (AF N-2 ou N-1 selon date d’arrivée en France)
@@ -563,13 +519,14 @@ bot.hears(['réfugié', 'refugié', 'refugie'], (ctx) => {
     ❗️ Être exonérés de la CVEC
     `,
     {
-        parse_mode: "HTML"
+      parse_mode: "HTML",
     }
-    )
-})
+  );
+});
 
-bot.hears(['handicapé', 'handicape', 'handicapés'], (ctx) => {
-    ctx.reply(`
+bot.hears(["handicapé", "handicape", "handicapés"], (ctx) => {
+  ctx.reply(
+    `
 
     🔸 Critères d’attribution pour les étudiants handicapés : pas de limite d’âge 
     
@@ -579,14 +536,26 @@ bot.hears(['handicapé', 'handicape', 'handicapés'], (ctx) => {
 
     `,
     {
-        parse_mode: "HTML"
+      parse_mode: "HTML",
     }
-    )
-})
+  );
+});
 
-
-bot.hears(['isolé', 'isole', 'particulier', 'divorcé', 'décédé', 'divorce', 'decede', 'cas particulier'], (ctx) => {
-    [ctx.telegram.sendMessage(ctx.chat.id, 
+bot.hears(
+  [
+    "isolé",
+    "isole",
+    "particulier",
+    "divorcé",
+    "décédé",
+    "divorce",
+    "decede",
+    "cas particulier",
+  ],
+  (ctx) => {
+    [
+      ctx.telegram.sendMessage(
+        ctx.chat.id,
         `
     ❗️ Dans tous les cas, à titre vérificatif, les avis fiscaux des deux parents doivent être fournis ! Ensuite, au moment de l'instruction le gestionnaire vérifiera les ressources à prendre en compte.
 
@@ -598,22 +567,26 @@ bot.hears(['isolé', 'isole', 'particulier', 'divorcé', 'décédé', 'divorce',
 
     🔸 Si l'étudiant n'est reconnu à la naissance que par un seul parent. Dans ce cas, merci de fournir une copie du livret de famille.
 
-    `, 
-    {
-        parse_mode: "HTML"
-    }),
-    ctx.telegram.sendChatAction(ctx.chat.id, 'upload_photo'), 
-    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/particulier.jpg"})]
-
-})
-
+    `,
+        {
+          parse_mode: "HTML",
+        }
+      ),
+      ctx.telegram.sendChatAction(ctx.chat.id, "upload_photo"),
+      ctx.telegram.sendPhoto(ctx.chat.id, {
+        source: "ressource/particulier.jpg",
+      }),
+    ];
+  }
+);
 
 // Liste des pays
 
 // Utilisation des points HTML
-bot.hears(['DOM', 'dom', 'TOM', 'tom', 'DOM TOM', 'dom tom'], (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.hears(["DOM", "dom", "TOM", "tom", "DOM TOM", "dom tom"], (ctx) => {
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 &#8226; Guyane française
 &#8226; Guadeloupe
 &#8226; La Réunion
@@ -626,14 +599,28 @@ bot.hears(['DOM', 'dom', 'TOM', 'tom', 'DOM TOM', 'dom tom'], (ctx) => {
 &#8226; Saint-Pierre-et-Miquelon
 &#8226; Saint-Barthélemy
 &#8226; Saint-Martin
-    `, 
+    `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.hears(['Méditerranée', 'méditerranée', 'mediterranee', 'pays riverains de la Méditerranée', 'pays méditerranée', 'pays mediterranee', 'pays riverains de la méditerranée', 'pays méditerranéen'], (ctx) => {
-    [ctx.telegram.sendMessage(ctx.chat.id, 
+bot.hears(
+  [
+    "Méditerranée",
+    "méditerranée",
+    "mediterranee",
+    "pays riverains de la Méditerranée",
+    "pays méditerranée",
+    "pays mediterranee",
+    "pays riverains de la méditerranée",
+    "pays méditerranéen",
+  ],
+  (ctx) => {
+    [
+      ctx.telegram.sendMessage(
+        ctx.chat.id,
         `
 <b>Rive européenne</b> :
 &#8226; France
@@ -663,35 +650,43 @@ bot.hears(['Méditerranée', 'méditerranée', 'mediterranee', 'pays riverains d
 &#8226; Tunisie
 &#8226; Algérie
 &#8226; Maroc
-    `, 
-    {
-        parse_mode: "HTML"
-    }),
-    ctx.telegram.sendChatAction(ctx.chat.id, 'upload_photo'), 
-    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/mediterranee.png"})]
-
-})
-
-
+    `,
+        {
+          parse_mode: "HTML",
+        }
+      ),
+      ctx.telegram.sendChatAction(ctx.chat.id, "upload_photo"),
+      ctx.telegram.sendPhoto(ctx.chat.id, {
+        source: "ressource/mediterranee.png",
+      }),
+    ];
+  }
+);
 
 // Inline keys -- commande 1 (site)
 
-bot.command('site', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Appuyez sur les buttons',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Crous de Paris", url: "www.crous-paris.fr"}],
-                [{text: "Crous de Versaille", url: "www.crous-versailles.fr"}, {text: "Crous de Créteil", url: "www.crous-creteil.fr"}],
-                [{text: "Mes Services Étudiant", url: "www.messervices.etudiant.gouv.fr"}],
+bot.command("site", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Appuyez sur les buttons", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Crous de Paris", url: "www.crous-paris.fr" }],
+        [
+          { text: "Crous de Versaille", url: "www.crous-versailles.fr" },
+          { text: "Crous de Créteil", url: "www.crous-creteil.fr" },
+        ],
+        [
+          {
+            text: "Mes Services Étudiant",
+            url: "www.messervices.etudiant.gouv.fr",
+          },
+        ],
 
-                // [{text: "Paris", callback_data: "PAR"}],
-                // [{text: "Versaille", callback_data: "VER"}, {text: "Créteil", callback_data: "CRE"}]
-                
-            ]
-        }
-    })
-})
+        // [{text: "Paris", callback_data: "PAR"}],
+        // [{text: "Versaille", callback_data: "VER"}, {text: "Créteil", callback_data: "CRE"}]
+      ],
+    },
+  });
+});
 
 // bot.action('VER', (ctx) => {
 //     ctx.deleteMessage()
@@ -737,7 +732,7 @@ bot.command('site', (ctx) => {
 //             inline_keyboard: [
 //                 [{text: "Paris", callback_data: "PAR"}],
 //                 [{text: "Versaille", callback_data: "VER"}, {text: "Créteil", callback_data: "CRE"}]
-                
+
 //             ]
 //         }
 //     })
@@ -752,38 +747,58 @@ bot.command('site', (ctx) => {
 //             inline_keyboard: [
 //                 [{text: "Paris", callback_data: "PAR"}],
 //                 [{text: "Versaille", callback_data: "VER"}, {text: "Créteil", callback_data: "CRE"}]
-                
+
 //             ]
 //         }
 //     })
 
 // })
 
-
-
 // Inline keys -- commande 2 (revision)
 
-bot.command('revision', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Les révisions :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Maladie", callback_data: "MALADIE"}, {text: "Chômage", callback_data: "CHOMAGE"}],
-                [{text: "Divorce", callback_data: "DIVORCE"}, {text: "Décès", callback_data: "DECES"}],
-                [{text: "Retraite", callback_data: "RETRAITE"}, {text: "Surendettement", callback_data: "ENDETTE"}],
-                [{text: "Réduction du temps de travail", callback_data: "REDUCTION"}, {text: "Mise en disponibilité", callback_data: "MISED"}],
-                [{text: "Redressement judiciaire ou liquidation judiciaire", callback_data: "JUDICIAIRE"}],
-                [{text: "Congés sans traitement, sans solde ou parental", callback_data: "CONGE"}],
-                [{text: "COVID-19", callback_data: "COVID"}]
-            ]
-        }
-    })
-})
+bot.command("revision", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Les révisions :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "Maladie", callback_data: "MALADIE" },
+          { text: "Chômage", callback_data: "CHOMAGE" },
+        ],
+        [
+          { text: "Divorce", callback_data: "DIVORCE" },
+          { text: "Décès", callback_data: "DECES" },
+        ],
+        [
+          { text: "Retraite", callback_data: "RETRAITE" },
+          { text: "Surendettement", callback_data: "ENDETTE" },
+        ],
+        [
+          { text: "Réduction du temps de travail", callback_data: "REDUCTION" },
+          { text: "Mise en disponibilité", callback_data: "MISED" },
+        ],
+        [
+          {
+            text: "Redressement judiciaire ou liquidation judiciaire",
+            callback_data: "JUDICIAIRE",
+          },
+        ],
+        [
+          {
+            text: "Congés sans traitement, sans solde ou parental",
+            callback_data: "CONGE",
+          },
+        ],
+        [{ text: "COVID-19", callback_data: "COVID" }],
+      ],
+    },
+  });
+});
 
-bot.action('MALADIE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("MALADIE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
 
 🔸 Indemnités journalière versées par l’assurance maladie.
@@ -793,17 +808,18 @@ Les pièces complémentaires nécessaires sont :
 🔸 Le complément versé par la complémentaire santé (non obligatoire).
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
-bot.action('CHOMAGE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("CHOMAGE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Montant de l’indemnité journalière de l’allocation d’Aide au Retour à l’Emploi (ARE).
@@ -813,17 +829,18 @@ Les pièces complémentaires nécessaires sont :
 🔸 Si les parents ne bénéficient pas de l’ARE ni de l’ASS, il doit nous fournir l’attestation RSA.
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
-bot.action('DIVORCE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("DIVORCE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Jugement de divorce, lettre de conciliation ou de non conciliation.
@@ -833,18 +850,18 @@ Les pièces complémentaires nécessaires sont :
 ❗️ Nouveau RBG = RBG du parent ayant la garde + revenus capitaux mobiliers / 2 + revenus fonciers / 2.
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
-
-bot.action('DECES', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("DECES", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Acte de décès
@@ -855,34 +872,43 @@ Les pièces complémentaires nécessaires sont :
 
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
 // Retraite a des button pour deux choix et un retour
-bot.action('RETRAITE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("RETRAITE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Choisissez :
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retraite : pour le privé", callback_data: "RPRIVE"}],
-                [{text: "Retraite : pour la fonction publique", callback_data: "RPUBLIQ"}],
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retraite : pour le privé", callback_data: "RPRIVE" }],
+          [
+            {
+              text: "Retraite : pour la fonction publique",
+              callback_data: "RPUBLIQ",
+            },
+          ],
+          [{ text: "Retour", callback_data: "RETREVISION" }],
+        ],
+      },
+    }
+  );
+});
 
-bot.action('RPRIVE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("RPRIVE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
 
 🔸 Montants versés par l’assurance retraite.
@@ -892,17 +918,18 @@ Les pièces complémentaires nécessaires sont :
 ❗️ Nouveau RBG = Retraite + RBG autre parent + revenus capitaux mobiliers + revenus fonciers.
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETRETRAITE"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETRETRAITE" }]],
+      },
+    }
+  );
+});
 
-bot.action('RPUBLIQ', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("RPUBLIQ", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
 
 🔸 Retraite de base.
@@ -912,38 +939,44 @@ Les pièces complémentaires nécessaires sont :
 ❗️ Nouveau RBG = Retraite + RBG autre parent + revenus capitaux mobiliers + revenus fonciers.
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETRETRAITE"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETRETRAITE" }]],
+      },
+    }
+  );
+});
 
-bot.action('RETRETRAITE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("RETRETRAITE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Choisissez :
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retraite : pour le privé", callback_data: "RPRIVE"}],
-                [{text: "Retraite : pour la fonction publique", callback_data: "RPUBLIQ"}],
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
-
-
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retraite : pour le privé", callback_data: "RPRIVE" }],
+          [
+            {
+              text: "Retraite : pour la fonction publique",
+              callback_data: "RPUBLIQ",
+            },
+          ],
+          [{ text: "Retour", callback_data: "RETREVISION" }],
+        ],
+      },
+    }
+  );
+});
 
 // fin de retraite
 
-
-bot.action('ENDETTE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("ENDETTE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Plan conventionnel de redressement définitif, daté.
@@ -951,17 +984,18 @@ Les pièces complémentaires nécessaires sont :
 🔸 OU tableau des mesures imposées par la commission, daté.
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
-bot.action('JUDICIAIRE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("JUDICIAIRE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Copie du jugement de liquidation ou de redressement judiciaire.
@@ -969,17 +1003,18 @@ Les pièces complémentaires nécessaires sont :
 🔸 Avis fiscal N-1.
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
-bot.action('REDUCTION', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("REDUCTION", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Avenant au contrat de travail ou arrêté (pour les fonctionnaires) prévoyant la modification du temps de travail.
@@ -990,17 +1025,18 @@ Les pièces complémentaires nécessaires sont :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
-bot.action('CONGE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("CONGE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Document attestant de la prise de congés sans solde (privé et public).
@@ -1009,17 +1045,18 @@ Les pièces complémentaires nécessaires sont :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
-bot.action('MISED', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("MISED", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
     
 🔸 Décision de l’administration attestant de la mise en disponibilité
@@ -1029,34 +1066,38 @@ Les pièces complémentaires nécessaires sont :
 ❗️ Nouveau RBG = Résultat révision + RBG autre parent + revenus capitaux mobiliers + revenus fonciers.
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVISION" }]],
+      },
+    }
+  );
+});
 
 // Covid a des button pour deux choix et un retour
-bot.action('COVID', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("COVID", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Choisissez :
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Profession salariée", callback_data: "CSALAR"}],
-                [{text: "Profession indépendante", callback_data: "CINDEP"}],
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Profession salariée", callback_data: "CSALAR" }],
+          [{ text: "Profession indépendante", callback_data: "CINDEP" }],
+          [{ text: "Retour", callback_data: "RETREVISION" }],
+        ],
+      },
+    }
+  );
+});
 
-bot.action('CSALAR', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("CSALAR", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
 
 🔸 En cas de chômage : attestation pôle emploi avec le montant des indemnités journalières
@@ -1064,17 +1105,18 @@ Les pièces complémentaires nécessaires sont :
 🔸 En cas de chômage partiel : une copie des bulletins de salaire des mois concernés
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETCOVID"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETCOVID" }]],
+      },
+    }
+  );
+});
 
-bot.action('CINDEP', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("CINDEP", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les pièces complémentaires nécessaires sont :
 
 🔸 Extrait K : concerne les entreprises commerciales individuelles, c’est-à-dire les commerçants.
@@ -1089,110 +1131,128 @@ Les pièces complémentaires nécessaires sont :
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETCOVID"}]
-            ]
-        }, 
-        parse_mode: "HTML"
-
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETCOVID" }]],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 // fin de covid
 
+// Retours buttons
 
+bot.action("RETREVISION", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Les révisions :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "Maladie", callback_data: "MALADIE" },
+          { text: "Chômage", callback_data: "CHOMAGE" },
+        ],
+        [
+          { text: "Divorce", callback_data: "DIVORCE" },
+          { text: "Décès", callback_data: "DECES" },
+        ],
+        [
+          { text: "Retraite", callback_data: "RETRAITE" },
+          { text: "Surendettement", callback_data: "ENDETTE" },
+        ],
+        [
+          { text: "Réduction du temps de travail", callback_data: "REDUCTION" },
+          { text: "Mise en disponibilité", callback_data: "MISED" },
+        ],
+        [
+          {
+            text: "Redressement judiciaire ou liquidation judiciaire",
+            callback_data: "JUDICIAIRE",
+          },
+        ],
+        [
+          {
+            text: "Congés sans traitement, sans solde ou parental",
+            callback_data: "CONGE",
+          },
+        ],
+        [{ text: "COVID-19", callback_data: "COVID" }],
+      ],
+    },
+  });
+});
 
-
-
-
-// Retours buttons 
-
-
-
-bot.action('RETREVISION', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Les révisions :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Maladie", callback_data: "MALADIE"}, {text: "Chômage", callback_data: "CHOMAGE"}],
-                [{text: "Divorce", callback_data: "DIVORCE"}, {text: "Décès", callback_data: "DECES"}],
-                [{text: "Retraite", callback_data: "RETRAITE"}, {text: "Surendettement", callback_data: "ENDETTE"}],
-                [{text: "Réduction du temps de travail", callback_data: "REDUCTION"}, {text: "Mise en disponibilité", callback_data: "MISED"}],
-                [{text: "Redressement judiciaire ou liquidation judiciaire", callback_data: "JUDICIAIRE"}],
-                [{text: "Congés sans traitement, sans solde ou parental", callback_data: "CONGE"}],
-                [{text: "COVID-19", callback_data: "COVID"}]
-            ]
-        }
-    })
-
-})
-
-
-bot.action('RETCOVID', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("RETCOVID", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Choisissez :
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Profession salariée", callback_data: "CSALAR"}],
-                [{text: "Profession indépendante", callback_data: "CINDEP"}],
-                [{text: "Retour", callback_data: "RETREVISION"}]
-            ]
-        }
-    })
-
-})
-
-
-
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Profession salariée", callback_data: "CSALAR" }],
+          [{ text: "Profession indépendante", callback_data: "CINDEP" }],
+          [{ text: "Retour", callback_data: "RETREVISION" }],
+        ],
+      },
+    }
+  );
+});
 
 // Inline keys -- commande 3 (prise de revenus)
 
-bot.command('revenu', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Prise des revenus :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Étudiants français 🇫🇷", callback_data: "EFR"}],
-                [{text: "Étudiants européens 🇪🇺", callback_data: "EEU"}],
-                [{text: "Étudiants étrangers 🏁", callback_data: "EET"}],
-                [{text: "Étudiants de Nouvelle-Calédonie 🇳🇨", callback_data: "ENC"}],
-                [{text: "Étudiant marié", callback_data: "EMR"}],
-                [{text: "Étudiant avec un enfant", callback_data: "EEN"}],
-                [{text: "Étudiant réfugié", callback_data: "ERF"}],
-                [{text: "Étudiant orphelin de ses deux parents / Étudiant pupille de la Nation", callback_data: "EOR"}],
-                [{text: "Étudiant à l’Aide Sociale à l’Enfance (ASE)", callback_data: "EAS"}]
+bot.command("revenu", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Prise des revenus :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Étudiants français 🇫🇷", callback_data: "EFR" }],
+        [{ text: "Étudiants européens 🇪🇺", callback_data: "EEU" }],
+        [{ text: "Étudiants étrangers 🏁", callback_data: "EET" }],
+        [{ text: "Étudiants de Nouvelle-Calédonie 🇳🇨", callback_data: "ENC" }],
+        [{ text: "Étudiant marié", callback_data: "EMR" }],
+        [{ text: "Étudiant avec un enfant", callback_data: "EEN" }],
+        [{ text: "Étudiant réfugié", callback_data: "ERF" }],
+        [
+          {
+            text: "Étudiant orphelin de ses deux parents / Étudiant pupille de la Nation",
+            callback_data: "EOR",
+          },
+        ],
+        [
+          {
+            text: "Étudiant à l’Aide Sociale à l’Enfance (ASE)",
+            callback_data: "EAS",
+          },
+        ],
+      ],
+    },
+  });
+});
 
-            ]
-        }
-    })
-})
-
-bot.action('EFR', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("EFR", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 Parents en France : prendre l’AF des parents N-2 de la demande.
 
 🔸 Parents à l’étranger : demande de consulat à faire <b>\u21E8 indiquer via un ticket</b>.
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }, 
-            parse_mode: "HTML"
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-    })
-})
-
-bot.action('EEU', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("EEU", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔘 <b>Prise de revenus :</b>
 
 🔸 Parents en France : prendre l’AF des parents N-2 de la demande.
@@ -1213,19 +1273,19 @@ bot.action('EEU', (ctx) => {
 
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }, 
-            parse_mode: "HTML"
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-    })
-})
-
-bot.action('EET', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("EET", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔘 <b>Prise de revenus :</b>
 
 🔸 Etudiant de <b>– de 25 ans</b> : prendre l’AF des parents N-2 de la demande avec obligation de rattachement de l’étudiant sur leur AF.
@@ -1249,20 +1309,19 @@ bot.action('EET', (ctx) => {
 
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        },
-            parse_mode: "HTML"
-        
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('ENC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("ENC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
     
 🔸 Demander le Relevé d’information des revenus familiaux (remplace l’AF).
 
@@ -1270,53 +1329,53 @@ bot.action('ENC', (ctx) => {
 
             `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+    }
+  );
+});
 
-
-bot.action('EMR', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("EMR", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
     
 🔸 Prendre leur AF commun <u>seulement</u> s’ils déclarent 90% d’un SMIC.
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }, 
-            parse_mode: "HTML"
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-    })
-})
-
-bot.action('EEN', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("EEN", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
     
 🔸 Prendre son AF avec attestation sur l’honneur de rattachement de l’enfant.
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+    }
+  );
+});
 
-
-bot.action('ERF', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("ERF", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Etudiants réfugiés :
 
 🔸 Demander lettre de l’Office Française de Protection des Réfugiés et Apatrides (Ofpra).
@@ -1329,33 +1388,35 @@ Etudiants réfugiés :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+    }
+  );
+});
 
-bot.action('EOR', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("EOR", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
     
 🔸 Prendre de revenus de l’étudiant.
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+    }
+  );
+});
 
-bot.action('EAS', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, `
+bot.action("EAS", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
     
 🔸 Prendre de revenus de l’étudiant.
 
@@ -1363,76 +1424,105 @@ bot.action('EAS', (ctx) => {
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETREVENU"}]
-            ]
-        }
-    })
-})
-
+      reply_markup: {
+        inline_keyboard: [[{ text: "Retour", callback_data: "RETREVENU" }]],
+      },
+    }
+  );
+});
 
 // Retours buttons revenus
-bot.action('RETREVENU', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Prise des revenus :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Étudiants français 🇫🇷", callback_data: "EFR"}],
-                [{text: "Étudiants européens 🇪🇺", callback_data: "EEU"}],
-                [{text: "Étudiants étrangers 🏁", callback_data: "EET"}],
-                [{text: "Étudiants de Nouvelle-Calédonie 🇳🇨", callback_data: "ENC"}],
-                [{text: "Étudiant marié", callback_data: "EMR"}],
-                [{text: "Étudiant avec un enfant", callback_data: "EEN"}],
-                [{text: "Étudiant réfugié", callback_data: "ERF"}],
-                [{text: "Étudiant orphelin de ses deux parents / Étudiant pupille de la Nation", callback_data: "EOR"}],
-                [{text: "Étudiant à l’Aide Sociale à l’Enfance (ASE)", callback_data: "EAS"}]
-
-            ]
-        }
-    })
-})
-
-
+bot.action("RETREVENU", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Prise des revenus :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Étudiants français 🇫🇷", callback_data: "EFR" }],
+        [{ text: "Étudiants européens 🇪🇺", callback_data: "EEU" }],
+        [{ text: "Étudiants étrangers 🏁", callback_data: "EET" }],
+        [{ text: "Étudiants de Nouvelle-Calédonie 🇳🇨", callback_data: "ENC" }],
+        [{ text: "Étudiant marié", callback_data: "EMR" }],
+        [{ text: "Étudiant avec un enfant", callback_data: "EEN" }],
+        [{ text: "Étudiant réfugié", callback_data: "ERF" }],
+        [
+          {
+            text: "Étudiant orphelin de ses deux parents / Étudiant pupille de la Nation",
+            callback_data: "EOR",
+          },
+        ],
+        [
+          {
+            text: "Étudiant à l’Aide Sociale à l’Enfance (ASE)",
+            callback_data: "EAS",
+          },
+        ],
+      ],
+    },
+  });
+});
 
 // Inline keys -- commande 4 (actualités importantes)
 
-bot.command('actualite', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Les actualités importantes :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Attestation d’assiduité", callback_data: "ASSIDU"}],
-                [{text: "En cas d'urgence sociale", callback_data: "URGSOC"}],
-                [{text: "Aide de 500 euros annoncée par le gouvernement", callback_data: "AEUGOU"}],
-                [{text: "Etudiants avec nationalité britanique", callback_data: "ETUBRI"}],
-                [{text: "Accompagnement psychologique étudiants", callback_data: "ACCPSY"}],
-                [{text: "Suppression des RIB dans les dossier Aglaé", callback_data: "SUPRIB"}],
-                [{text: "Remboursement des frais de dossier", callback_data: "REMFRA"}],
+bot.command("actualite", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Les actualités importantes :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Attestation d’assiduité", callback_data: "ASSIDU" }],
+        [{ text: "En cas d'urgence sociale", callback_data: "URGSOC" }],
+        [
+          {
+            text: "Aide de 500 euros annoncée par le gouvernement",
+            callback_data: "AEUGOU",
+          },
+        ],
+        [
+          {
+            text: "Etudiants avec nationalité britanique",
+            callback_data: "ETUBRI",
+          },
+        ],
+        [
+          {
+            text: "Accompagnement psychologique étudiants",
+            callback_data: "ACCPSY",
+          },
+        ],
+        [
+          {
+            text: "Suppression des RIB dans les dossier Aglaé",
+            callback_data: "SUPRIB",
+          },
+        ],
+        [
+          {
+            text: "Remboursement des frais de dossier",
+            callback_data: "REMFRA",
+          },
+        ],
+      ],
+    },
+  });
+});
 
-            ]
-        }
-    })
-})
-
-bot.action('ASSIDU', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("ASSIDU", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 L’attestation d’assiduité <b>est demandée uniquement</b> aux étudiants ayant une remontée d’inscription après décembre 2020.
 
         `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('URGSOC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("URGSOC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 Il faut à partir de maintenant indiquer :
  
 -          Le Crous de gestion de l’étudiant ;
@@ -1443,42 +1533,48 @@ bot.action('URGSOC', (ctx) => {
 
         `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('AEUGOU', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("AEUGOU", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 L’aide de 500 euros annoncée par le gouvernement est une ASAP et non pas une aide supplémentaire « automatique ».
  
 ❗️ Merci de communiquer aux étudiants désirant en bénéficier la procédure des ASAP selon leur  Crous de gestion.
 
         `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('ETUBRI', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("ETUBRI", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 La période transitoire accordée pour le Brexit est terminée depuis le 01/01/2021.
 
 ❗️ A compter de cette date les étudiants de nationalité britannique sont considérés comme des étudiants hors Union Européen.
 
         `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('ACCPSY', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("ACCPSY", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 Veuillez trouver quelques précisions concernant les « chèques Psy », dispositif qui sera opérationnel à la fin du mois de mars 2021.
  
 Les services de santé universitaires (SSU) sont au cœur du dispositif et agréent les psychologues qui contribuent au dispositif.
@@ -1493,14 +1589,16 @@ Ou sur le site internet dédié : https://www.santepsyetudiants.beta.gouv.fr/
 
         `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('SUPRIB', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("SUPRIB", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 En cas de sollicitation, merci d’indiquer à l’étudiant la procédure :
  
 1)      Modification des coordonnées bancaires par l’étudiant sur son profil MSE +
@@ -1509,80 +1607,101 @@ bot.action('SUPRIB', (ctx) => {
 ❗️ Attention si l’étudiant a 2 D.S.E il devra envoyer les copie sur chacun de ses dossiers).
         `,
     {
-        parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('REMFRA', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id,
-        `
+bot.action("REMFRA", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 Les chèques de 4 euros pour paiement des frais de dossier sont à envoyer au Crous de Paris en courrier recommandé et ceux pour tous les étudiants de l’Ile de France.
  
 🔸 Pour les demandes de remboursements (uniquement si il a payé plusieurs fois), l’étudiant devra envoyer un courrier à l’agence comptable du Crous de Paris avec une attestation sur l’honneur, le justificatif de paiement et son RIB.
 
         `,
     {
-        parse_mode: "HTML"
-    })
-})
-
-
-
-
-
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Inline keys -- commande 5 (aide complémentaires)
 
-bot.command('aidec', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Aides complémentaires',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Aide à la mobilité ParcourSup", callback_data: "AMPC"}],
-                [{text: "Aide au Mérite", callback_data: "ABMC"}],
-                [{text: "Aide à la mobilité Master", callback_data: "AMMC"}],
-                [{text: "Bourse pendant les grandes vacances (CGV)", callback_data: "CGVC"}]
-            ]
-        }
-    })
-})
+bot.command("aidec", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Aides complémentaires", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Aide à la mobilité ParcourSup", callback_data: "AMPC" }],
+        [{ text: "Aide au Mérite", callback_data: "ABMC" }],
+        [{ text: "Aide à la mobilité Master", callback_data: "AMMC" }],
+        [
+          {
+            text: "Bourse pendant les grandes vacances (CGV)",
+            callback_data: "CGVC",
+          },
+        ],
+      ],
+    },
+  });
+});
 
-bot.action('RETAIDEC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Aides complémentaires',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Aide à la mobilité ParcourSup", callback_data: "AMPC"}],
-                [{text: "Aide au Mérite", callback_data: "ABMC"}],
-                [{text: "Aide à la mobilité Master", callback_data: "AMMC"}],
-                [{text: "Bourse pendant les grandes vacances (CGV)", callback_data: "CGVC"}]
-            ]
-        }
-    })
-})
+bot.action("RETAIDEC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Aides complémentaires", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Aide à la mobilité ParcourSup", callback_data: "AMPC" }],
+        [{ text: "Aide au Mérite", callback_data: "ABMC" }],
+        [{ text: "Aide à la mobilité Master", callback_data: "AMMC" }],
+        [
+          {
+            text: "Bourse pendant les grandes vacances (CGV)",
+            callback_data: "CGVC",
+          },
+        ],
+      ],
+    },
+  });
+});
 
 // AMP
 bot.action("AMPC", (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Aide à la mobilité ParcourSup Conditions", callback_data: "AMPCON"}],
-                [{text: "Aide à la mobilité ParcourSup Procédure", callback_data: "AMPPRO"}],
-                [{text: "AMP : établissement hors université habilité", callback_data: "AMPETA"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-})
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Aide à la mobilité ParcourSup Conditions",
+            callback_data: "AMPCON",
+          },
+        ],
+        [
+          {
+            text: "Aide à la mobilité ParcourSup Procédure",
+            callback_data: "AMPPRO",
+          },
+        ],
+        [
+          {
+            text: "AMP : établissement hors université habilité",
+            callback_data: "AMPETA",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 
-bot.action('AMPCON', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("AMPCON", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les conditions d'AMP :
 
 🔸 Le montant = 500 euros
@@ -1599,19 +1718,21 @@ Les conditions d'AMP :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAMPC"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAMPC" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('AMPPRO', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("AMPPRO", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 La procédure d'AMP :
 
 🔸 La demande peut être faite sur https://amp.etudiant.gouv.fr/ jusqu’au 14 septembre de l’année N.
@@ -1624,19 +1745,21 @@ La procédure d'AMP :
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAMPC"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAMPC" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('AMPETA', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("AMPETA", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 La liste des établissements hors universités habilités :
 
 - Le Conservatoire national supérieur d’art dramatique ;
@@ -1651,53 +1774,69 @@ La liste des établissements hors universités habilités :
 - L’Université Paris-Dauphine.
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAMPC"}] // 
-            ]
-        }
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAMPC" }], //
+        ],
+      },
+    }
+  );
+});
 
-
-
-bot.action('RETAMPC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Aide à la mobilité ParcourSup Conditions", callback_data: "AMPCON"}],
-                [{text: "Aide à la mobilité ParcourSup Procédure", callback_data: "AMPPRO"}],
-                [{text: "AMP : établissement hors université habilité", callback_data: "AMPETA"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-
-})
+bot.action("RETAMPC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Aide à la mobilité ParcourSup Conditions",
+            callback_data: "AMPCON",
+          },
+        ],
+        [
+          {
+            text: "Aide à la mobilité ParcourSup Procédure",
+            callback_data: "AMPPRO",
+          },
+        ],
+        [
+          {
+            text: "AMP : établissement hors université habilité",
+            callback_data: "AMPETA",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 // Fin AMP
 
-
 // BM
-bot.action('ABMC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Bourse au mérite nationale", callback_data: "ABMCON"}],
-                [{text: "Bourse au mérite région (non visible sur Aglae)", callback_data: "ABMREG"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-})
+bot.action("ABMC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Bourse au mérite nationale", callback_data: "ABMCON" }],
+        [
+          {
+            text: "Bourse au mérite région (non visible sur Aglae)",
+            callback_data: "ABMREG",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 
-bot.action('ABMCON', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("ABMCON", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Bourse au mérite nationale :
 
 🔸 Avoir eu le baccalauréat avec <b>mention TB</b> l’année N-1 de la 1ère demande de bourse (la zone texte d’AGLAE).
@@ -1712,20 +1851,21 @@ Bourse au mérite nationale :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAMB"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAMB" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('ABMREG', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("ABMREG", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Bourse au mérite région (non visible sur Aglae) :
 
 🔸 Versée aux étudiants ayant obtenu la mention TB au baccalauréat en Ile de France et s’inscrivant dans l’enseignement supérieur toujours en IDF.
@@ -1740,52 +1880,64 @@ Bourse au mérite région (non visible sur Aglae) :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAMB"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAMB" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('RETAMB', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Bourse au mérite nationale", callback_data: "ABMCON"}],
-                [{text: "Bourse au mérite région (non visible sur Aglae)", callback_data: "ABMREG"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-})
+bot.action("RETAMB", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Bourse au mérite nationale", callback_data: "ABMCON" }],
+        [
+          {
+            text: "Bourse au mérite région (non visible sur Aglae)",
+            callback_data: "ABMREG",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 // Fin BM
 
-
-
 // AMM
-bot.action('AMMC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Aide à la mobilité Master Conditions", callback_data: "AMMCON"}],
-                [{text: "Aide à la mobilité Master Procédure", callback_data: "AMMPRO"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-})
+bot.action("AMMC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Aide à la mobilité Master Conditions",
+            callback_data: "AMMCON",
+          },
+        ],
+        [
+          {
+            text: "Aide à la mobilité Master Procédure",
+            callback_data: "AMMPRO",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 
-bot.action('AMMCON', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("AMMCON", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les conditions d'AMP :
 
 🔸 Seul les étudiants qui sont inscrits en diplôme national de master (DNM) dans une université d’enseignement supérieur.
@@ -1800,20 +1952,21 @@ Les conditions d'AMP :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAMM"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAMM" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('ABMREG', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("ABMREG", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 La procédure d'AMP :
 
 🔸 L’étudiant doit faire la demande sur https://www.messervices.etudiant.gouv.fr .
@@ -1824,51 +1977,69 @@ La procédure d'AMP :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAMM"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAMM" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('RETAMM', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Aide à la mobilité Master Conditions", callback_data: "AMMCON"}],
-                [{text: "Aide à la mobilité Master Procédure", callback_data: "AMMPRO"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-})
+bot.action("RETAMM", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Aide à la mobilité Master Conditions",
+            callback_data: "AMMCON",
+          },
+        ],
+        [
+          {
+            text: "Aide à la mobilité Master Procédure",
+            callback_data: "AMMPRO",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 // Fin AMM
 
-
 // CGV
-bot.action('CGVC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Bourse pendant les grandes vacances Éligibilité", callback_data: "CGVELI"}],
-                [{text: "Bourse pendant les grandes vacances Conditions", callback_data: "CGVCON"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-})
+bot.action("CGVC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Bourse pendant les grandes vacances Éligibilité",
+            callback_data: "CGVELI",
+          },
+        ],
+        [
+          {
+            text: "Bourse pendant les grandes vacances Conditions",
+            callback_data: "CGVCON",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 
-bot.action('CGVELI', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("CGVELI", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 l'Éligibilité à CGV :
 
 🔸 Parents de l’étudiant ou tuteur résidant dans les DOM-TOM 
@@ -1888,20 +2059,21 @@ l'Éligibilité à CGV :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETCGV"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETCGV" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('CGVCON', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("CGVCON", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Les conditions d'AMP :
 
 🔸 L’activation du complément grandes vacances ne peut pas être activé en fin de cursus, si l’étudiant est inscrit en BTS 2, licence 3 ou en master 2, l’étudiant devra attendre septembre de l’année N + 1 pour justifier d’une continuité dans ses études.
@@ -1912,73 +2084,106 @@ Les conditions d'AMP :
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETCGV"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETCGV" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('RETCGV', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Bourse pendant les grandes vacances Éligibilité", callback_data: "CGVELI"}],
-                [{text: "Bourse pendant les grandes vacances Conditions", callback_data: "CGVCON"}],
-                [{text: "Retour", callback_data: "RETAIDEC"}]
-            ]
-        }
-    })
-})
+bot.action("RETCGV", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Bourse pendant les grandes vacances Éligibilité",
+            callback_data: "CGVELI",
+          },
+        ],
+        [
+          {
+            text: "Bourse pendant les grandes vacances Conditions",
+            callback_data: "CGVCON",
+          },
+        ],
+        [{ text: "Retour", callback_data: "RETAIDEC" }],
+      ],
+    },
+  });
+});
 // Fin CGV
 // Fin aide complémentaires
 
-
-
-
 // Inline keys -- commande 6 (Le Service Social)
 
-bot.command('social', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Le Service Social',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Allocation Spécifique d’Allocation Annuelle (ASAA)", callback_data: "SASAA"}],
-                [{text: "Allocation Spécifique Aide Ponctuelle (ASAP)", callback_data: "SASAP"}],
-                [{text: "Service Social Procédure et autres fonctions", callback_data: "SPROC"}],
-                [{text: "Les contacts de Service Social", callback_data: "SCONT"}]
-            ]
-        }
-    })
-})
+bot.command("social", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Le Service Social", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Allocation Spécifique d’Allocation Annuelle (ASAA)",
+            callback_data: "SASAA",
+          },
+        ],
+        [
+          {
+            text: "Allocation Spécifique Aide Ponctuelle (ASAP)",
+            callback_data: "SASAP",
+          },
+        ],
+        [
+          {
+            text: "Service Social Procédure et autres fonctions",
+            callback_data: "SPROC",
+          },
+        ],
+        [{ text: "Les contacts de Service Social", callback_data: "SCONT" }],
+      ],
+    },
+  });
+});
 
-bot.action('RETSOC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Le Service Social',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Allocation Spécifique d’Allocation Annuelle (ASAA)", callback_data: "SASAA"}],
-                [{text: "Allocation Spécifique Aide Ponctuelle (ASAP)", callback_data: "SASAP"}],
-                [{text: "Service Social Procédure et autres fonctions", callback_data: "SPROC"}],
-                [{text: "Les contacts de Service Social", callback_data: "SCONT"}]
-            ]
-        }
-    })
-})
-
-
+bot.action("RETSOC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Le Service Social", {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "Allocation Spécifique d’Allocation Annuelle (ASAA)",
+            callback_data: "SASAA",
+          },
+        ],
+        [
+          {
+            text: "Allocation Spécifique Aide Ponctuelle (ASAP)",
+            callback_data: "SASAP",
+          },
+        ],
+        [
+          {
+            text: "Service Social Procédure et autres fonctions",
+            callback_data: "SPROC",
+          },
+        ],
+        [{ text: "Les contacts de Service Social", callback_data: "SCONT" }],
+      ],
+    },
+  });
+});
 
 // ASAA
 bot.action("SASAA", (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 <b>L’Allocation Spécifique d’Allocation Annuelle (ASAA)</b> :
 
 🔸 Cette aide n’est pas cumulable avec une BCS, l’étudiant doit donc avoir un refus de bourse obligatoirement.
@@ -1997,21 +2202,22 @@ bot.action("SASAA", (ctx) => {
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETSOC"}] // bouton de retour à créer
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
-
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETSOC" }], // bouton de retour à créer
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // ASAP
-bot.action('SASAP', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("SASAP", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 <b>L’Allocation Spécifique Aide Ponctuelle (ASAP)</b> :
 
 🔸 Cette aide vise à ce que l’étudiant puisse poursuivre ses études malgré une situation grave se présentant au cours de l’année universitaire. 
@@ -2028,20 +2234,22 @@ bot.action('SASAP', (ctx) => {
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETSOC"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETSOC" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Procédure
-bot.action('SPROC', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("SPROC", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 🔸 Les services sociaux des 3 Crous d’IDF gèrent les aides d’urgence (ASAA et ASAP), l’accompagnement des étudiants en urgence sociale et les notes de rupture familiale (en cas d’absence d’un des parents de l’étudiant).
 
@@ -2049,36 +2257,36 @@ bot.action('SPROC', (ctx) => {
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETSOC"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
-
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETSOC" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // contacts sociale
-bot.action('SCONT', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Service Sociale - Paris", callback_data: "SSPAR"}],
-                [{text: "Service Sociale - Versailles", callback_data: "SSVER"}],
-                [{text: "Service Sociale - Créteil", callback_data: "SSCRE"}],
-                [{text: "Retour", callback_data: "RETSOC"}]
-            ]
-        }
-    })
-})
+bot.action("SCONT", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Service Sociale - Paris", callback_data: "SSPAR" }],
+        [{ text: "Service Sociale - Versailles", callback_data: "SSVER" }],
+        [{ text: "Service Sociale - Créteil", callback_data: "SSCRE" }],
+        [{ text: "Retour", callback_data: "RETSOC" }],
+      ],
+    },
+  });
+});
 
-bot.action('SSPAR', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("SSPAR", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 🔸 L’étudiant doit se rapprocher du site internet de son Crous de Paris, onglet « ACTION SOCIALE / SANTÉ » rubrique « Assistants sociaux du Crous de Paris » et sélectionner le logo de son établissement pour connaitre le contact
 
@@ -2086,20 +2294,27 @@ bot.action('SSPAR', (ctx) => {
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Assistants sociaux du Crous de Paris", url: "https://www.crous-paris.fr/aides-sociales/les-assistants-sociaux-du-crous-de-paris"}],
-                [{text: "Retour", callback_data: "RETSCONT"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: "Assistants sociaux du Crous de Paris",
+              url: "https://www.crous-paris.fr/aides-sociales/les-assistants-sociaux-du-crous-de-paris",
+            },
+          ],
+          [{ text: "Retour", callback_data: "RETSCONT" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('SSVER', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("SSVER", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 🔸 L’étudiant doit se rapprocher du site internet de son Crous de Versailles, onglet « ACTION SOCIALE / SANTÉ » rubrique « contacter le service social ».
 
@@ -2107,20 +2322,27 @@ bot.action('SSVER', (ctx) => {
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Assistants sociaux du Crous de Versailles", url: "https://www.crous-versailles.fr/aides-sociales/contacter-service-social/"}],
-                [{text: "Retour", callback_data: "RETSCONT"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: "Assistants sociaux du Crous de Versailles",
+              url: "https://www.crous-versailles.fr/aides-sociales/contacter-service-social/",
+            },
+          ],
+          [{ text: "Retour", callback_data: "RETSCONT" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('SSCRE', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("SSCRE", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 🔸 L’étudiant doit prendre contact directement avec l’accueil du service social pour demander une aide ou un rendez-vous.
 
@@ -2128,72 +2350,76 @@ bot.action('SSCRE', (ctx) => {
 
         `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETSCONT"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETSCONT" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
-
-bot.action('RETSCONT', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Choisissez :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Service Sociale - Paris", callback_data: "SSPAR"}],
-                [{text: "Service Sociale - Versailles", callback_data: "SSVER"}],
-                [{text: "Service Sociale - Créteil", callback_data: "SSCRE"}],
-                [{text: "Retour", callback_data: "RETSOC"}]
-            ]
-        }
-    })
-})
+bot.action("RETSCONT", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Choisissez :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Service Sociale - Paris", callback_data: "SSPAR" }],
+        [{ text: "Service Sociale - Versailles", callback_data: "SSVER" }],
+        [{ text: "Service Sociale - Créteil", callback_data: "SSCRE" }],
+        [{ text: "Retour", callback_data: "RETSOC" }],
+      ],
+    },
+  });
+});
 // Fin Social
-
-
 
 // Inline keys -- commande 7 (Criteres de bourse)
 
-bot.command('bourse', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Bourse sur critères sociaux',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Critères d’attribution", callback_data: "CRITOK"}],
-                [{text: "Ne peuvent prétendre à une bourse", callback_data: "CRITKO"}],
-                [{text: "Déterminer l’échelon de bourse", callback_data: "ECHEL"}],
-                [{text: "Dispositions", callback_data: "DISPO"}]
-            ]
-        }
-    })
-})
+bot.command("bourse", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Bourse sur critères sociaux", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Critères d’attribution", callback_data: "CRITOK" }],
+        [
+          {
+            text: "Ne peuvent prétendre à une bourse",
+            callback_data: "CRITKO",
+          },
+        ],
+        [{ text: "Déterminer l’échelon de bourse", callback_data: "ECHEL" }],
+        [{ text: "Dispositions", callback_data: "DISPO" }],
+      ],
+    },
+  });
+});
 
-bot.action('RETBOU', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 'Bourse sur critères sociaux',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Critères d’attribution", callback_data: "CRITOK"}],
-                [{text: "Ne peuvent prétendre à une bourse", callback_data: "CRITKO"}],
-                [{text: "Déterminer l’échelon de bourse", callback_data: "ECHEL"}],
-                [{text: "Dispositions", callback_data: "DISPO"}]
-            ]
-        }
-    })
-})
-
-
+bot.action("RETBOU", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Bourse sur critères sociaux", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Critères d’attribution", callback_data: "CRITOK" }],
+        [
+          {
+            text: "Ne peuvent prétendre à une bourse",
+            callback_data: "CRITKO",
+          },
+        ],
+        [{ text: "Déterminer l’échelon de bourse", callback_data: "ECHEL" }],
+        [{ text: "Dispositions", callback_data: "DISPO" }],
+      ],
+    },
+  });
+});
 
 // Critères d’attribution
 bot.action("CRITOK", (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 <b>Critères d’attribution</b> :
 
 🔸 Être âgé de moins de 28 ans au 01/09 de l’année N de la première demande, si l’étudiant a plus de 28 ans au 01/09 il doit justifier de ne pas avoir interrompu ses études.
@@ -2213,21 +2439,23 @@ bot.action("CRITOK", (ctx) => {
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETBOU"}] // bouton de retour à créer
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
-
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETBOU" }], // bouton de retour à créer
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Ne peuvent prétendre
-bot.action('CRITKO', (ctx) => {
-    [ctx.deleteMessage(),
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("CRITKO", (ctx) => {
+  [
+    ctx.deleteMessage(),
+    ctx.telegram.sendMessage(
+      ctx.chat.id,
+      `
 <b>Ne peuvent prétendre à une bourse</b> :
 
 🔸 Les étudiants inscrits dans un établissement non habilité.
@@ -2247,24 +2475,26 @@ bot.action('CRITKO', (ctx) => {
 ❗️ Les étudiants en école d’infirmier (Instituts de Formation en Soins Infirmiers), par contre ils pourront prétendre à une bourse de la région.
 
     `,
-    {
+      {
         reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETBOU"}] // 
-            ]
+          inline_keyboard: [
+            [{ text: "Retour", callback_data: "RETBOU" }], //
+          ],
         },
-        parse_mode: "HTML"
-    }),
-    ctx.telegram.sendChatAction(ctx.chat.id, 'upload_photo'), 
-    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/ifsi.png"})]
-
-})
+        parse_mode: "HTML",
+      }
+    ),
+    ctx.telegram.sendChatAction(ctx.chat.id, "upload_photo"),
+    ctx.telegram.sendPhoto(ctx.chat.id, { source: "ressource/ifsi.png" }),
+  ];
+});
 
 // Echelon de bourse
-bot.action('ECHEL', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("ECHEL", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 🔸 Les revenus de la famille.
 
@@ -2288,74 +2518,73 @@ bot.action('ECHEL', (ctx) => {
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETBOU"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETBOU" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Dispositions
-bot.action('DISPO', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("DISPO", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 🔸 Droits de bourse et maintien : (sous construction)
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETBOU"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETBOU" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 // Fin bourse
-
 
 // Inline keys -- commande 8 (Aglae)
 
-bot.command('aglae', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, "Les fonctions d'AGLAE",
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Les notifications", callback_data: "NOTIFI"}],
-                [{text: "Modification des vœux", callback_data: "MVOEUX"}],
-                [{text: "Transfert de dossier", callback_data: "TRANSF"}],
-                [{text: "Les réimputations", callback_data: "REIMPO"}]
-            ]
-        }
-    })
-})
+bot.command("aglae", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Les fonctions d'AGLAE", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Les notifications", callback_data: "NOTIFI" }],
+        [{ text: "Modification des vœux", callback_data: "MVOEUX" }],
+        [{ text: "Transfert de dossier", callback_data: "TRANSF" }],
+        [{ text: "Les réimputations", callback_data: "REIMPO" }],
+      ],
+    },
+  });
+});
 
-bot.action('RETAGL', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, "Les fonctions d'AGLAE",
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Les notifications", callback_data: "NOTIFI"}],
-                [{text: "Modification des vœux", callback_data: "MVOEUX"}],
-                [{text: "Transfert de dossier", callback_data: "TRANSF"}],
-                [{text: "Les réimputations", callback_data: "REIMPO"}]
-            ]
-        }
-    })
-})
-
-
+bot.action("RETAGL", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, "Les fonctions d'AGLAE", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Les notifications", callback_data: "NOTIFI" }],
+        [{ text: "Modification des vœux", callback_data: "MVOEUX" }],
+        [{ text: "Transfert de dossier", callback_data: "TRANSF" }],
+        [{ text: "Les réimputations", callback_data: "REIMPO" }],
+      ],
+    },
+  });
+});
 
 // Les notifications
 bot.action("NOTIFI", (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 <b>Notification conditionnelle</b> :
 
 🔸 Après étude et validation du dossier, le Crous envoie par e-mail une réponse de principe indiquant l’échelon de bourse.
@@ -2382,103 +2611,104 @@ bot.action("NOTIFI", (ctx) => {
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAGL"}] // bouton de retour à créer
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
-
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAGL" }], // bouton de retour à créer
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Modification des vœux
-bot.action('MVOEUX', (ctx) => {
-    [ctx.deleteMessage(),
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("MVOEUX", (ctx) => {
+  [
+    ctx.deleteMessage(),
+    ctx.telegram.sendMessage(
+      ctx.chat.id,
+      `
 🔸 Pour modifier des vœux d’étude, plusieurs éléments sont à connaitre :
     `,
-    {
+      {
         reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAGL"}] // 
-            ]
+          inline_keyboard: [
+            [{ text: "Retour", callback_data: "RETAGL" }], //
+          ],
         },
-        parse_mode: "HTML"
-    }),
-    ctx.telegram.sendChatAction(ctx.chat.id, 'upload_photo'), 
-    ctx.telegram.sendPhoto(ctx.chat.id, {source: "ressource/ifsi.png"})]
-
-})
+        parse_mode: "HTML",
+      }
+    ),
+    ctx.telegram.sendChatAction(ctx.chat.id, "upload_photo"),
+    ctx.telegram.sendPhoto(ctx.chat.id, { source: "ressource/ifsi.png" }),
+  ];
+});
 
 // Transfert de dossier
-bot.action('TRANSF', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("TRANSF", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 🔸 LSelon l’établissement d’inscription de l’étudiant, un transfert de Crous sera nécessaire.
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAGL"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAGL" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Les réimputations
-bot.action('REIMPO', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("REIMPO", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 🔸 Lorsque le versement d’une bourse a été faite sur un compte clôturé ou sur un compte autre que le compte courant de l’étudiant, le paiement est en rejet bancaire
 
     `,
     {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Retour", callback_data: "RETAGL"}] // 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "Retour", callback_data: "RETAGL" }], //
+        ],
+      },
+      parse_mode: "HTML",
+    }
+  );
+});
 // fin aglae
-
-
-
-
-
 
 // Inline keys -- commande.hear  (mail)
 
-bot.hears(['mail type', 'Mail Type', 'mail', 'Mail'], (ctx) => {
-    ctx.reply(`Choisissez un mail type :`,
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Master => Licence", callback_data: "MAILML"}], 
-                [{text: "Attestation de non boursier", callback_data: "MAILNB"}],
-                [{text: "Conseil de l’Europe", callback_data: "MCONEU"}], 
-                [{text: "Code UAI RNE", callback_data: "MCODUAI"}], 
-                [{text: "Frais de dossier", callback_data: "MFRADO"}], 
-                [{text: "Points de charge fratrie ", callback_data: "MPOIFRA"}], 
+bot.hears(["mail type", "Mail Type", "mail", "Mail"], (ctx) => {
+  ctx.reply(`Choisissez un mail type :`, {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Master => Licence", callback_data: "MAILML" }],
+        [{ text: "Attestation de non boursier", callback_data: "MAILNB" }],
+        [{ text: "Conseil de l’Europe", callback_data: "MCONEU" }],
+        [{ text: "Code UAI RNE", callback_data: "MCODUAI" }],
+        [{ text: "Frais de dossier", callback_data: "MFRADO" }],
+        [{ text: "Points de charge fratrie ", callback_data: "MPOIFRA" }],
+      ],
+    },
+    parse_mode: "HTML",
+  });
+});
 
-            ]
-        },
-            parse_mode: "HTML"
-    })
-})
-
-bot.action('MAILML', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("MAILML", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 A l'issue du premier examen de votre dossier social étudiant, il apparaît que votre demande de bourse d'enseignement supérieur ne pourra faire l'objet d'une réponse positive.
 En effet, selon l'application de la réglementation actuellement en vigueur, vous ne remplissez pas l'une des conditions exigées pour l'ouverture du droit à bourse.
@@ -2491,14 +2721,16 @@ Je vous informe que la réglementation des bourses associées au cursus LMD (lic
         
     `,
     {
-            parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('MAILNB', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("MAILNB", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 
 Bonjour, 
@@ -2515,14 +2747,16 @@ Le service des bourses
         
     `,
     {
-            parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('MCONEU', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("MCONEU", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Ci-joint la notification de conseil de l’Europe. 
 
 Madame, Monsieur, 
@@ -2548,14 +2782,16 @@ Le service des bourses.
         
     `,
     {
-            parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('MCODUAI', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("MCODUAI", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 Bonjour, 
 
@@ -2571,14 +2807,16 @@ Le service des bourses
         
     `,
     {
-            parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('MFRADO', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("MFRADO", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 Bonjour, 
 
@@ -2606,14 +2844,16 @@ Le service des bourses
               
     `,
     {
-            parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
-bot.action('MPOIFRA', (ctx) => {
-    ctx.deleteMessage()
-    ctx.telegram.sendMessage(ctx.chat.id, 
-        `
+bot.action("MPOIFRA", (ctx) => {
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 
 Bonjour, 
 
@@ -2634,86 +2874,86 @@ Le service des bourses
               
     `,
     {
-            parse_mode: "HTML"
-    })
-})
+      parse_mode: "HTML",
+    }
+  );
+});
 
 // Fin mail
 
-
-
-
 // Inline keys -- commande bonus (Leslie)
 
-bot.command('leslie', (ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, 'Si Leslie voulait répondre :',
-    {
-        reply_markup: {
-            inline_keyboard: [
-                [{text: "Option 1 - Parents isolés", callback_data: "LESISO"}],
-                [{text: "Option 2 - Remontée d'inscription", callback_data: "LESREI"}],
-                [{text: "Option 3 - Attestation sur l'honneur", callback_data: "LESATS"}]
-            ]
-        }
-    })
-})
+bot.command("leslie", (ctx) => {
+  ctx.telegram.sendMessage(ctx.chat.id, "Si Leslie voulait répondre :", {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "Option 1 - Parents isolés", callback_data: "LESISO" }],
+        [
+          {
+            text: "Option 2 - Remontée d'inscription",
+            callback_data: "LESREI",
+          },
+        ],
+        [
+          {
+            text: "Option 3 - Attestation sur l'honneur",
+            callback_data: "LESATS",
+          },
+        ],
+      ],
+    },
+  });
+});
 
 bot.action("LESREI", (ctx) => {
-    ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice")
-    ctx.telegram.sendVoice(ctx.chat.id, {source: "ressource/Leslie1.mp3"})
-})
-
+  ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice");
+  ctx.telegram.sendVoice(ctx.chat.id, { source: "ressource/Leslie1.mp3" });
+});
 
 bot.action("LESATS", (ctx) => {
-    ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice")
-    ctx.telegram.sendVoice(ctx.chat.id, {source: "ressource/Leslie2.mp3"})
-})
-
+  ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice");
+  ctx.telegram.sendVoice(ctx.chat.id, { source: "ressource/Leslie2.mp3" });
+});
 
 bot.action("LESISO", (ctx) => {
-    ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice")
-    ctx.telegram.sendVoice(ctx.chat.id, {source: "ressource/Leslie3.mp3"})
-})
-
+  ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice");
+  ctx.telegram.sendVoice(ctx.chat.id, { source: "ressource/Leslie3.mp3" });
+});
 
 // send photo command
 
 // bot.hears(['mediterranee url'], (ctx) => {
 //     ctx.telegram.sendChatAction(ctx.chat.id, "upload_photo")
-//     ctx.telegram.sendPhoto(ctx.chat.id, 
+//     ctx.telegram.sendPhoto(ctx.chat.id,
 //         "https://www.algerie360.com/wp-content/uploads/2018/04/med21.png"
 //     )
 
 // })
-
 
 // bot.hears(['audio'], (ctx) => {
 //     ctx.telegram.sendChatAction(ctx.chat.id, "upload_voice")
 //     ctx.telegram.sendVoice(ctx.chat.id, {source: "ressource/test.m4a"})
 // })
 
+bot.hears(["annuaire"], (ctx) => {
+  ctx.telegram.sendChatAction(ctx.chat.id, "upload_document");
+  ctx.telegram.sendDocument(ctx.chat.id, { source: "ressource/annuaire.pdf" });
+});
 
-bot.hears(['annuaire'], (ctx) => {
-    ctx.telegram.sendChatAction(ctx.chat.id, "upload_document")
-    ctx.telegram.sendDocument(ctx.chat.id, {source: "ressource/annuaire.pdf"})
-})
+bot.hears(["loi"], (ctx) => {
+  ctx.telegram.sendChatAction(ctx.chat.id, "upload_document");
+  ctx.telegram.sendDocument(ctx.chat.id, { source: "ressource/loi.pdf" });
+});
 
-bot.hears(['loi'], (ctx) => {
-    ctx.telegram.sendChatAction(ctx.chat.id, "upload_document")
-    ctx.telegram.sendDocument(ctx.chat.id, {source: "ressource/loi.pdf"})
-})
-
-bot.hears(['guide'], (ctx) => {
-    ctx.telegram.sendChatAction(ctx.chat.id, "upload_document")
-    ctx.telegram.sendDocument(ctx.chat.id, {source: "ressource/guide.pdf"})
-})
-
-
+bot.hears(["guide"], (ctx) => {
+  ctx.telegram.sendChatAction(ctx.chat.id, "upload_document");
+  ctx.telegram.sendDocument(ctx.chat.id, { source: "ressource/guide.pdf" });
+});
 
 // liste des commandes et mots
 
-bot.hears(['code', 'codes'], (ctx) => {
-    ctx.reply(`
+bot.hears(["code", "codes"], (ctx) => {
+  ctx.reply(`
     crous
     
     leo
@@ -2785,12 +3025,8 @@ bot.hears(['code', 'codes'], (ctx) => {
     loi
     guide
     
-    `
-    )
-})
-
-
-
+    `);
+});
 
 // Si dans le chat on écrit quelque chose d'autre que les mots clès
 
@@ -2798,20 +3034,21 @@ bot.hears(['code', 'codes'], (ctx) => {
 //     //ctx.reply("Que puis-je faire pour vous ?")
 //     ctx.reply(
 // `
-// Ce bot peut exécuter les ordres suivants : 
+// Ce bot peut exécuter les ordres suivants :
 
 // /start   : Démarre le bot
 // /help    : Foire aux questions
 // /crous   : Les sites de Crous
 // /revision : Les révisions
 
-
 // `)
 
 // })
 
 bot.use((ctx) => {
-    ctx.telegram.sendMessage(ctx.chat.id, `
+  ctx.telegram.sendMessage(
+    ctx.chat.id,
+    `
 Que puis-je faire ?
 
 Vous pouvez appuyer sur les boutons en bas ou taper des mots clès (acronymes, nom, etc).
@@ -2830,37 +3067,35 @@ Vous pouvez appuyer sur les boutons en bas ou taper des mots clès (acronymes, n
 
             `,
     {
-        reply_markup: {
-            
-            keyboard: [
-                [{text: "/bourse \u21E8 La bourse sur critères sociaux"}],
-                [{text: "/aidec \u21E8 Les aides complémentaires"}],
-                [{text: "/social \u21E8 Le service social"}],
-                [{text: "/aglae  \u21E8 Les commandes d'AGLAE"}],
-                [{text: "/revision \u21E8 Le Guide des révisions"}],
-                [{text: "/revenu \u21E8 Guide de prise des revenus et Présence"}],
-                [{text: "/actualite \u21E8 Les actualtiés importantes à retenir"}],
-                [{text: "/site \u21E8 Les sites internet nécessaires"}],
-                [{text: "/start \u21E8 Démarre le bot"}, {text: "/help \u21E8 Foire aux questions"}]
-
-
-            ]
-        }
-    })
-
-})
-
-
+      reply_markup: {
+        keyboard: [
+          [{ text: "/bourse \u21E8 La bourse sur critères sociaux" }],
+          [{ text: "/aidec \u21E8 Les aides complémentaires" }],
+          [{ text: "/social \u21E8 Le service social" }],
+          [{ text: "/aglae  \u21E8 Les commandes d'AGLAE" }],
+          [{ text: "/revision \u21E8 Le Guide des révisions" }],
+          [{ text: "/revenu \u21E8 Guide de prise des revenus et Présence" }],
+          [{ text: "/actualite \u21E8 Les actualtiés importantes à retenir" }],
+          [{ text: "/site \u21E8 Les sites internet nécessaires" }],
+          [
+            { text: "/start \u21E8 Démarre le bot" },
+            { text: "/help \u21E8 Foire aux questions" },
+          ],
+        ],
+      },
+    }
+  );
+});
 
 // bot.launch()
 
-module.exports = bot
+module.exports = bot;
 
 // crous-guide-bot
-// https://crous-guide-bot.herokuapp.com/ 
+// https://crous-guide-bot.herokuapp.com/
 // const token = '1588288656:AAG0etwxH9EKDj0qHfkuQEimax73TfJ7YUk'
 
 // heroku git:remote -a crous-guide-bot
-// git add .    
-// git commit -m 'commit message'  
-// git push heroku master      
+// git add .
+// git commit -m 'commit message'
+// git push heroku master
